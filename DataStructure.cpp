@@ -1,3 +1,4 @@
+
 /*
 Instructions
 	Create a C++ program that will perform the following:
@@ -27,7 +28,7 @@ using namespace std;
 
 //GLOBAL VARIABLES
 int randomNumbers[10];
-string descriptions = "HAHHAHA";
+string descriptions = "";
 
 //DESIGN
 void maximizeWindow() {
@@ -161,14 +162,12 @@ int displayArray() {
 	for (int indexA=0; indexA<6; indexA++) {
 			cout<<char(205);
 		}
-	cout<<char(188)<<endl;
+	cout<<char(188)<<endl<<endl;
 }
 
 
 //BOX FOR SET OF NUMBERS
 int boxForSetOfNumbers() {
-	cout<<endl<<endl;
-	
 	cout<<"\t\t\t\t\t"<<descriptions<<endl;
 	
 	//loop for middle horizontal line in set of numbers
@@ -236,6 +235,76 @@ int boxForSetOfNumbers() {
 }
 
 
+//DISPLAY THE SORTED ARRAY
+int displaySortedArray() {
+	cout<<endl<<endl;
+
+	cout<<"\t\t\t\t\t"<<char(201);		arrayTopHorizontalLine();									cout<<char(187)<<endl;
+	cout<<"\t\t\t\t\t"<<char(186)<<"                                                                     "<<char(186)<<endl;
+	cout<<"\t\t\t\t\t"<<char(186)<<"                        SORTED SET OF NUMBERS                        "<<char(186)<<endl;
+	cout<<"\t\t\t\t\t"<<char(186)<<"                                                                     "<<char(186)<<endl;
+	
+	//loop for middle horizontal line in set of numbers
+	cout<<"\t\t\t\t\t"<<char(204);
+	for (int indexA=0; indexA<9; indexA++) {
+		for (int indexA=0; indexA<6; indexA++) {
+			cout<<char(205);
+		}
+		cout<<char(203);
+    }
+	for (int indexA=0; indexA<6; indexA++) {
+			cout<<char(205);
+		}
+	cout<<char(185)<<endl;
+	
+	//loop for below space line in set of numbers
+	cout<<"\t\t\t\t\t"<<char(186);
+	for (int indexA=0; indexA<9; indexA++) {
+		for (int indexA=0; indexA<6; indexA++) {
+			cout<<" ";
+		}
+		cout<<char(186);
+    }
+	for (int indexA=0; indexA<6; indexA++) {
+			cout<<" ";
+		}
+	cout<<char(186)<<endl;
+	
+	//loop for set of numbers
+	cout<<"\t\t\t\t\t"<<char(186);
+	for (int indexA=0; indexA<10; indexA++) {
+        cout <<"  "<< setw(2) << setfill(' ') << randomNumbers[indexA] <<"  "<< char(186);
+    }
+    cout<<endl;
+    
+	//loop for below space line in set of numbers
+	cout<<"\t\t\t\t\t"<<char(186);
+	for (int indexA=0; indexA<9; indexA++) {
+		for (int indexA=0; indexA<6; indexA++) {
+			cout<<" ";
+		}
+		cout<<char(186);
+    }
+	for (int indexA=0; indexA<6; indexA++) {
+			cout<<" ";
+		}
+	cout<<char(186)<<endl;
+    
+	//loop for below horizontal line in set of numbers
+	cout<<"\t\t\t\t\t"<<char(200);
+	for (int indexA=0; indexA<9; indexA++) {
+		for (int indexA=0; indexA<6; indexA++) {
+			cout<<char(205);
+		}
+		cout<<char(202);
+    }
+	for (int indexA=0; indexA<6; indexA++) {
+			cout<<char(205);
+		}
+	cout<<char(188)<<endl;
+}
+
+
 
 //MENU
 void mainMenu() {
@@ -285,29 +354,21 @@ int selectionSortProgram() {
 
         // Swap the found minimum element with the first element
         swap(randomNumbers[indexA], randomNumbers[minIndex]);
+        
+        //PAUSE
+        system("PAUSE");
 
         // Print the array at this step
-        cout << "Step " << indexA + 1 << ": ";
-        for (int k = 0; k < 10; ++k) {
-            cout << randomNumbers[k] << " ";
-        }
+        cout << "\t\t\t\t\t Step " << indexA + 1 << ": ";
+		boxForSetOfNumbers();
         cout << endl;
     }
 }
 
 int mainselectionSort() {
-    cout << "Original array: ";
-    for (int indexA = 0; indexA < 10; ++indexA) {
-        cout << randomNumbers[indexA] << " ";
-    }
-    cout << endl;
-
+	
     selectionSortProgram();
-
-    cout << "Sorted array: ";
-    for (int indexA = 0; indexA < 10; ++indexA) {
-        cout << randomNumbers[indexA] << " ";
-    }
+    displaySortedArray();
     cout << endl;
 
     return 0;
