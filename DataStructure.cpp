@@ -85,19 +85,6 @@ void thankYou() {
 }
 
 
-
-//GENERATE RANDOM NUMBER
-int autoGenerateNumbers() {
-	srand(static_cast<unsigned int>(time(0)));
-	int lowerBound = 1;
-    int upperBound = 99;
-    
-	// Generate and store random numbers in the array
-    for (int indexA= 0; indexA<10; ++indexA) {
-        randomNumbers[indexA] = rand() % (upperBound - lowerBound + 1) + lowerBound;
-    }
-}
-
 //DISPLAY ARRAY
 int displayArray(string descriptions) {
 	cout<<endl<<endl;
@@ -268,6 +255,19 @@ void mainMenu() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+//GENERATE RANDOM NUMBER
+int autoGenerateNumbers() {
+	srand(static_cast<unsigned int>(time(0)));
+	int lowerBound = 1;
+    int upperBound = 99;
+    
+	// Generate and store random numbers in the array
+    for (int indexA= 0; indexA<10; ++indexA) {
+        randomNumbers[indexA] = rand() % (upperBound - lowerBound + 1) + lowerBound;
+    }
+}
+
+
 //SELECTION SORT
 
 int programSelectionSort() {
@@ -312,6 +312,7 @@ int main() {
 
 	
 	mainProgram:
+		autoGenerateNumbers();
 		maximizeWindow();
 		system("CLS");
 		title();	
@@ -374,7 +375,7 @@ int main() {
 		
 		case 9: {
 			caseGenerateNumbers:
-				autoGenerateNumbers();
+				system("CLS");
 				goto mainProgram;
 		}
 				
