@@ -289,8 +289,11 @@ int programSelectionSort() {
         //PAUSE
         system("PAUSE");
 
-        // Print the array at this step
-        cout << "\t\t\t\t\t Step " << indexA + 1 << ":  From previous table, Swap "<<randomNumbers[minIndex]<<" and "<<randomNumbers[indexA]<<",then the result is";
+		// Display the current step and the array state
+        cout << "\t\t\t\t\t Step " << indexA + 1 << ":  From previous table, Select the minimum element in the unsorted part\n";
+        cout << "\t\t\t\t\t\t\t Swap " << randomNumbers[minIndex] << " (at index " << minIndex << ") and " << randomNumbers[indexA] << " (at index " << indexA << ")\n";
+        cout << "\t\t\t\t\t\t\t After swapping, the array becomes:\n";
+    
 		boxForSetOfNumbers();
         cout << endl;
     }
