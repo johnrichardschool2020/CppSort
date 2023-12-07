@@ -268,6 +268,7 @@ int autoGenerateNumbers() {
 }
 
 
+
 //SELECTION SORT
 int programSelectionSort() {
 	
@@ -304,6 +305,7 @@ int programSelectionSort() {
 }	
 
 
+
 //INSERTION SORT
 int programInsertionSort() {
     for (int currentIndex = 1; currentIndex < 10; ++currentIndex) {
@@ -335,6 +337,55 @@ int programInsertionSort() {
     cout << endl;
 
     return 0;
+}
+
+
+
+// BUBBLE SORT
+int programBubbleSort() {
+    for (int indexA = 0; indexA < 10 - 1; ++indexA) {
+        cout << "\t\t\t\t\t Step " << indexA + 1 << ":\n";
+
+        bool swapped = false; // Flag to check if any swaps occurred in this step
+
+        for (int indexB = 0; indexB < 10 - indexA - 1; ++indexB) {
+            // If the element found is greater than the next element, swap them
+            if (randomNumbers[indexB] > randomNumbers[indexB + 1]) {
+                // Swap
+                int temp = randomNumbers[indexB];
+                randomNumbers[indexB] = randomNumbers[indexB + 1];
+                randomNumbers[indexB + 1] = temp;
+
+                // Display the array state after swapping
+                cout << "\t\t\t\t\t\t Swap " << randomNumbers[indexB] << " (at index " << indexB << ") and "
+                     << randomNumbers[indexB + 1] << " (at index " << indexB + 1 << ")\n";
+                cout << "\t\t\t\t\t\t After swapping, the array becomes:\n";
+
+                boxForSetOfNumbers();
+                cout << endl;
+
+                // PAUSE
+                system("PAUSE");
+
+                // Set the swapped flag
+                swapped = true;
+            }
+        }
+
+        if (!swapped) {
+            // If no swaps occurred in this step, the array is already sorted
+            cout << "\t\t\t\t\t\t No Changes: The array is already sorted.\n";
+        }
+
+        // Display the array after this step
+        cout << "\t\t\t\t\t\t   After this step, the list looks like this:\n";
+        boxForSetOfNumbers();
+        cout << endl;
+    }
+
+    // Display the sorted array
+    displayArray(SORTED);
+    cout << endl;
 }
 
 
@@ -399,6 +450,7 @@ int main() {
 			caseBubbleSort:
 				system("CLS");
 				displayArray(RANDOM);
+				programBubbleSort();
 				thankYou();
 				break;
 		}
