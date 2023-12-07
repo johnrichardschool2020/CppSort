@@ -28,7 +28,9 @@ using namespace std;
 
 //GLOBAL VARIABLES
 int randomNumbers[10];
-string descriptions = "";
+const string SORTED = "SORTED";
+const string RANDOM = "RANDOM";
+
 
 //DESIGN
 void maximizeWindow() {
@@ -97,12 +99,12 @@ int autoGenerateNumbers() {
 }
 
 //DISPLAY ARRAY
-int displayArray() {
+int displayArray(string descriptions) {
 	cout<<endl<<endl;
 
 	cout<<"\t\t\t\t\t"<<char(201);		arrayTopHorizontalLine();									cout<<char(187)<<endl;
 	cout<<"\t\t\t\t\t"<<char(186)<<"                                                                     "<<char(186)<<endl;
-	cout<<"\t\t\t\t\t"<<char(186)<<"                        RANDOM SET OF NUMBERS                        "<<char(186)<<endl;
+	cout<<"\t\t\t\t\t"<<char(186)<<"                        "<<descriptions<<" SET OF NUMBERS                        "<<char(186)<<endl;
 	cout<<"\t\t\t\t\t"<<char(186)<<"                                                                     "<<char(186)<<endl;
 	
 	//loop for middle horizontal line in set of numbers
@@ -168,7 +170,7 @@ int displayArray() {
 
 //BOX FOR SET OF NUMBERS
 int boxForSetOfNumbers() {
-	cout<<"\t\t\t\t\t"<<descriptions<<endl;
+	cout<<endl;
 	
 	//loop for middle horizontal line in set of numbers
 	cout<<"\t\t\t\t\t"<<char(201);
@@ -235,75 +237,6 @@ int boxForSetOfNumbers() {
 }
 
 
-//DISPLAY THE SORTED ARRAY
-int displaySortedArray() {
-	cout<<endl<<endl;
-
-	cout<<"\t\t\t\t\t"<<char(201);		arrayTopHorizontalLine();									cout<<char(187)<<endl;
-	cout<<"\t\t\t\t\t"<<char(186)<<"                                                                     "<<char(186)<<endl;
-	cout<<"\t\t\t\t\t"<<char(186)<<"                        SORTED SET OF NUMBERS                        "<<char(186)<<endl;
-	cout<<"\t\t\t\t\t"<<char(186)<<"                                                                     "<<char(186)<<endl;
-	
-	//loop for middle horizontal line in set of numbers
-	cout<<"\t\t\t\t\t"<<char(204);
-	for (int indexA=0; indexA<9; indexA++) {
-		for (int indexA=0; indexA<6; indexA++) {
-			cout<<char(205);
-		}
-		cout<<char(203);
-    }
-	for (int indexA=0; indexA<6; indexA++) {
-			cout<<char(205);
-		}
-	cout<<char(185)<<endl;
-	
-	//loop for below space line in set of numbers
-	cout<<"\t\t\t\t\t"<<char(186);
-	for (int indexA=0; indexA<9; indexA++) {
-		for (int indexA=0; indexA<6; indexA++) {
-			cout<<" ";
-		}
-		cout<<char(186);
-    }
-	for (int indexA=0; indexA<6; indexA++) {
-			cout<<" ";
-		}
-	cout<<char(186)<<endl;
-	
-	//loop for set of numbers
-	cout<<"\t\t\t\t\t"<<char(186);
-	for (int indexA=0; indexA<10; indexA++) {
-        cout <<"  "<< setw(2) << setfill(' ') << randomNumbers[indexA] <<"  "<< char(186);
-    }
-    cout<<endl;
-    
-	//loop for below space line in set of numbers
-	cout<<"\t\t\t\t\t"<<char(186);
-	for (int indexA=0; indexA<9; indexA++) {
-		for (int indexA=0; indexA<6; indexA++) {
-			cout<<" ";
-		}
-		cout<<char(186);
-    }
-	for (int indexA=0; indexA<6; indexA++) {
-			cout<<" ";
-		}
-	cout<<char(186)<<endl;
-    
-	//loop for below horizontal line in set of numbers
-	cout<<"\t\t\t\t\t"<<char(200);
-	for (int indexA=0; indexA<9; indexA++) {
-		for (int indexA=0; indexA<6; indexA++) {
-			cout<<char(205);
-		}
-		cout<<char(202);
-    }
-	for (int indexA=0; indexA<6; indexA++) {
-			cout<<char(205);
-		}
-	cout<<char(188)<<endl;
-}
-
 
 
 //MENU
@@ -336,39 +269,33 @@ void mainMenu() {
 
 
 //SELECTION SORT
-void swap(int& num1SS, int& num2SS) {
-    int temp = num1SS;
-    num1SS = num2SS;
-    num2SS = temp;
-}
 
-int selectionSortProgram() {
+int programSelectionSort() {
+	
     for (int indexA = 0; indexA < 10 - 1; ++indexA) {
         // Find the minimum element in the unsorted part
         int minIndex = indexA;
-        for (int j = indexA + 1; j < 10; ++j) {
-            if (randomNumbers[j] < randomNumbers[minIndex]) {
-                minIndex = j;
+        for (int indexB = indexA + 1; indexB < 10; ++indexB) {
+            if (randomNumbers[indexB] < randomNumbers[minIndex]) {
+                minIndex = indexB;
             }
         }
 
         // Swap the found minimum element with the first element
-        swap(randomNumbers[indexA], randomNumbers[minIndex]);
+        int temp = randomNumbers[indexA];
+        randomNumbers[indexA] = randomNumbers[minIndex];
+        randomNumbers[minIndex] = temp;
         
         //PAUSE
         system("PAUSE");
 
         // Print the array at this step
-        cout << "\t\t\t\t\t Step " << indexA + 1 << ": ";
+        cout << "\t\t\t\t\t Step " << indexA + 1 << ":  From previous table, Swap "<<randomNumbers[minIndex]<<" and "<<randomNumbers[indexA]<<",then the result is";
 		boxForSetOfNumbers();
         cout << endl;
     }
-}
-
-int mainselectionSort() {
-	
-    selectionSortProgram();
-    displaySortedArray();
+    
+    displayArray(SORTED);
     cout << endl;
 
     return 0;
@@ -388,7 +315,7 @@ int main() {
 		maximizeWindow();
 		system("CLS");
 		title();	
-		displayArray();							
+		displayArray(RANDOM);							
 		mainMenu();
 			
 		
@@ -407,7 +334,7 @@ int main() {
 		case 1: {
 			caseBinarySearch:
 				system("CLS");
-				displayArray();
+				displayArray(RANDOM);
 				thankYou();
 				break;
 		}
@@ -415,8 +342,8 @@ int main() {
 		case 2: {
 			caseSelectionSort:
 				system("CLS");
-				displayArray();
-				mainselectionSort();
+				displayArray(RANDOM);
+				programSelectionSort();
 				thankYou();
 				break;
 		}
@@ -424,13 +351,15 @@ int main() {
 		case 3: {
 			caseInsertionSort:
 				system("CLS");
-				displayArray();
+				displayArray(RANDOM);
+				thankYou();
+				break;
 		}
 		
 		case 4: {
 			caseBubbleSort:
 				system("CLS");
-				displayArray();
+				displayArray(RANDOM);
 				thankYou();
 				break;
 		}
@@ -438,7 +367,7 @@ int main() {
 		case 5: {
 			caseMergeSort:
 				system("CLS");
-				displayArray();
+				displayArray(RANDOM);
 				thankYou();
 				break;
 		}
