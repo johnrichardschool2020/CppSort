@@ -269,7 +269,6 @@ int autoGenerateNumbers() {
 
 
 //SELECTION SORT
-
 int programSelectionSort() {
 	
     for (int indexA = 0; indexA < 10 - 1; ++indexA) {
@@ -290,9 +289,9 @@ int programSelectionSort() {
         system("PAUSE");
 
 		// Display the current step and the array state
-        cout << "\t\t\t\t\t Step " << indexA + 1 << ":  From previous table, Select the minimum element in the unsorted part\n";
-        cout << "\t\t\t\t\t\t\t Swap " << randomNumbers[minIndex] << " (at index " << minIndex << ") and " << randomNumbers[indexA] << " (at index " << indexA << ")\n";
-        cout << "\t\t\t\t\t\t\t After swapping, the array becomes:\n";
+        cout << "\t\t\t\t\t Step " << indexA + 1 << ":   From previous table, Select the minimum element in the unsorted part\n";
+        cout << "\t\t\t\t\t\t   Swap " << randomNumbers[minIndex] << " (at index " << minIndex << ") and " << randomNumbers[indexA] << " (at index " << indexA << ")\n";
+        cout << "\t\t\t\t\t\t   After swapping, the array becomes:\n";
     
 		boxForSetOfNumbers();
         cout << endl;
@@ -303,6 +302,41 @@ int programSelectionSort() {
 
     return 0;
 }	
+
+
+//INSERTION SORT
+int programInsertionSort() {
+    for (int currentIndex = 1; currentIndex < 10; ++currentIndex) {
+        int key = randomNumbers[currentIndex];
+        int insertionIndex = currentIndex - 1;
+
+        // Move elements greater than key to one position ahead
+        while (insertionIndex >= 0 && randomNumbers[insertionIndex] > key) {
+            randomNumbers[insertionIndex + 1] = randomNumbers[insertionIndex];
+            --insertionIndex;
+        }
+
+        // Insert the key into its correct position
+        randomNumbers[insertionIndex + 1] = key;
+        
+        //PAUSE
+        system("PAUSE");
+
+        // Show the current step and how the list looks now
+        cout << "\t\t\t\t\t Step " << currentIndex << ":   Pick " << key << " and insert it where it fits.\n";
+        cout << "\t\t\t\t\t\t   After this step, the list looks like this:\n";
+
+    
+		boxForSetOfNumbers();
+        cout << endl;
+    }
+    
+    displayArray(SORTED);
+    cout << endl;
+
+    return 0;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -356,6 +390,7 @@ int main() {
 			caseInsertionSort:
 				system("CLS");
 				displayArray(RANDOM);
+				programInsertionSort();
 				thankYou();
 				break;
 		}
