@@ -325,7 +325,7 @@ int programBinarySearch() {
         cout <<endl;
 		
         if (randomNumbers[mid] == key) {
-            cout<< "\t\t\t\t\t"<< key<<" key found at index " << mid << "!"<<endl<<endl;
+            cout<< "\t\t\t\t\t"<< key<<" key is found at index " << mid << "!"<<endl<<endl;
             return 0;
         } else if (randomNumbers[mid] < key) {
             low = mid + 1;
@@ -336,7 +336,7 @@ int programBinarySearch() {
         }
     }
 
-    cout<<endl<<endl<< "\t\t\t\t\t"<< key<<" Key not found in the array."<<endl;
+    cout<<endl<<endl<< "\t\t\t\t\t"<< key<<" Key is not found in the array."<<endl;
     return 0;
 }
 
@@ -461,6 +461,67 @@ int programBubbleSort() {
 }
 
 
+
+// MERGE SORT
+void merge(int arr[], int left, int middle, int right) {
+    int num1 = middle - left + 1;
+    int num2 = right - middle;
+
+    int L[num1], R[num2];
+
+    for (int indexA = 0; indexA < num1; indexA++)
+        L[indexA] = arr[left + indexA];
+    for (int indexB = 0; indexB < num2; indexB++)
+        R[indexB] = arr[middle + 1 + indexB];
+
+    int indexA = 0;
+    int indexB = 0;
+    int indexC = left;
+
+    while (indexA < num1 && indexB < num2) {
+        if (L[indexA] <= R[indexB]) {
+            arr[indexC] = L[indexA];
+            indexA++;
+        } else {
+            arr[indexC] = R[indexB];
+            indexB++;
+        }
+        indexC++;
+    }
+
+    while (indexA < num1) {
+        arr[indexC] = L[indexA];
+        indexA++;
+        indexC++;
+    }
+
+    while (indexB < num2) {
+        arr[indexC] = R[indexB];
+        indexB++;
+        indexC++;
+    }
+}
+
+void programMergeSort(int arr[], int left, int right) {
+    if (left < right) {
+        int middle = left + (right - left) / 2;
+
+        programMergeSort(arr, left, middle);
+        programMergeSort(arr, middle + 1, right);
+
+        merge(arr, left, middle, right);
+
+        // Print the current state of the array after merging
+        cout <<endl<< "\t\t\t\t\t\t After merging: ";
+        for (int indexA = left; indexA <= right; indexA++) {
+            cout << arr[indexA] << " ";
+        }
+        cout << endl;
+    }
+    
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -533,6 +594,8 @@ int main() {
 			caseMergeSort:
 				system("CLS");
 				displayArray(RANDOM);
+				programMergeSort(randomNumbers, 0, 9);
+				displayArray(SORTED);
 				thankYou();
 				break;
 		}
