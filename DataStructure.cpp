@@ -289,6 +289,58 @@ int autoGenerateNumbers() {
 
 
 
+//BUBBLE SORT FOR BINARY SEARCH
+int bubbleSort() {
+    for (int indexA = 0; indexA < 10 - 1; ++indexA) {
+        for (int indexB = 0; indexB < 10 - indexA - 1; ++indexB) {
+            if (randomNumbers[indexB] > randomNumbers[indexB + 1]) {
+                // Swap
+                int temp = randomNumbers[indexB];
+                randomNumbers[indexB] = randomNumbers[indexB + 1];
+                randomNumbers[indexB + 1] = temp;
+            }
+        }
+    }
+}
+// BINARY SEARCH
+int programBinarySearch() {
+	int key;
+	cout<<endl;
+    cout << "\t\t\t\t\t Enter the key to search: ";
+    cin >> key;
+	cout<<endl<<endl;
+	
+    int low = 0;
+    int high = 9;
+
+    // Binary search
+    while (low <= high) {
+        int mid = (low + high) / 2;
+
+        // Display the current array state
+        cout <<endl;
+        cout << "\t\t\t\t\t mid = " << mid;		cout << "\t\t mid = (low + high) / 2";				cout<<"\t\t if "<<key<<" > "<<randomNumbers[mid]<<" { low = "<<mid<<" + 1}"<<endl;
+        cout << "\t\t\t\t\t low = " << low;		cout << "\t\t mid = ("<<low<<" + "<<high<<") / 2";	cout<<"\t\t if "<<key<<" < "<<randomNumbers[mid]<<" { high = "<<mid<<" - 1}"<<endl;
+        cout << "\t\t\t\t\t high = " << high;	cout << "\t\t mid = "<<mid;							cout<<"\t\t\t if "<<high<<" < "<<low<<" { halt }"<<endl;
+        cout <<endl;
+		
+        if (randomNumbers[mid] == key) {
+            cout<< "\t\t\t\t\t"<< key<<" key found at index " << mid << "!"<<endl<<endl;
+            return 0;
+        } else if (randomNumbers[mid] < key) {
+            low = mid + 1;
+            cout<< "\t\t\t\t\t"<< key<<" key is greater than "<<randomNumbers[mid]<<" at index " << mid << ". Low index will be change. (low = "<<low<<")"<<endl<<endl;
+        } else {
+            high = mid - 1;
+            cout<< "\t\t\t\t\t"<< key<<" key is smaller than "<<randomNumbers[mid]<<" at index " << mid << ". High index will be change. (high = "<<high<<")"<<endl<<endl;
+        }
+    }
+
+    cout<<endl<<endl<< "\t\t\t\t\t"<< key<<" Key not found in the array."<<endl;
+    return 0;
+}
+
+
 //SELECTION SORT
 int programSelectionSort() {
 	
@@ -443,7 +495,9 @@ int main() {
 		case 1: {
 			caseBinarySearch:
 				system("CLS");
-				displayArray(RANDOM);
+				bubbleSort();
+				displayArray(SORTED);
+				programBinarySearch();
 				thankYou();
 				break;
 		}
