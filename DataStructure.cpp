@@ -141,6 +141,26 @@ int displayArray(string descriptions) {
 	cout<<char(186)<<endl;
     
 	//loop for below horizontal line in set of numbers
+	cout<<"\t\t\t\t\t"<<char(204);
+	for (int indexA=0; indexA<9; indexA++) {
+		for (int indexA=0; indexA<6; indexA++) {
+			cout<<char(205);
+		}
+		cout<<char(206);
+    }
+	for (int indexA=0; indexA<6; indexA++) {
+			cout<<char(205);
+		}
+	cout<<char(185)<<endl;
+	
+	//loop for Index Name
+	cout<<"\t\t\t\t\t"<<char(186);
+	for (int indexA=0; indexA<10; indexA++) {
+	cout<<"Index"<<indexA; cout<<char(186);
+	}
+	cout<<endl;
+	
+	//loop for below horizontal line in index numbers
 	cout<<"\t\t\t\t\t"<<char(200);
 	for (int indexA=0; indexA<9; indexA++) {
 		for (int indexA=0; indexA<6; indexA++) {
@@ -151,7 +171,7 @@ int displayArray(string descriptions) {
 	for (int indexA=0; indexA<6; indexA++) {
 			cout<<char(205);
 		}
-	cout<<char(188)<<endl<<endl;
+	cout<<char(188)<<endl;
 }
 
 
